@@ -2,7 +2,7 @@ name: Creche Monitor
 
 on:
   schedule:
-    - cron: "0 15 * * *"   # 12:00 Brasil (UTC-3)
+    - cron: "10 16 * * *"   # 12:00 Brasil (UTC-3)
   workflow_dispatch:
 
 permissions:
