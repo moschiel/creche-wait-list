@@ -147,6 +147,8 @@ def main():
             msg = f"Primeira leitura: posição {atual}"
         elif atual == last:
             msg = f"🔄 Sem mudança: posição continua {atual}"
+            print(msg) 
+            return # não reportamos via telegram se nao mudou.
         elif atual < last:
             msg = f"👶 Diminuiu de {last} para {atual}"
         else:
