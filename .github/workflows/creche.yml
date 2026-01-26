@@ -1,11 +1,16 @@
 name: Creche Monitor
 
 on:
-  schedule:
-    - cron: "10 13 * * *"   # 10:10 Brasil (UTC-3)
-    - cron: "10 17 * * *"   # 14:10 Brasil (UTC-3)
-    - cron: "10 21 * * *"   # 18:10 Brasil (UTC-3)
-  workflow_dispatch:
+  # Comentado: o schedule nativo do GitHub não está sendo registrado/disparado no seu repositório
+  # (bug conhecido em alguns casos, mesmo em público, com UI mostrando só workflow_dispatch)
+  # schedule:
+  #   - cron: "10 13 * * *"   # 10:10 Brasil (UTC-3) → 13:10 UTC
+  #   - cron: "10 17 * * *"   # 14:10 Brasil (UTC-3) → 17:10 UTC
+  #   - cron: "10 21 * * *"   # 18:10 Brasil (UTC-3) → 21:10 UTC
+
+  workflow_dispatch:          # Permite rodar manualmente pelo botão no GitHub
+  repository_dispatch:        # ← ADICIONADO: permite disparo externo via API (cron-job.org)
+    types: [run-creche-monitor]  # Nome do evento que você vai configurar no cron-job.org
 
 permissions:
   contents: write
