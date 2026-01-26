@@ -1,0 +1,13 @@
+name: Teste Schedule Privado
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo test
+        run: echo "Schedule rodou em $(date -u) UTC"
